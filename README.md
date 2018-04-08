@@ -5,12 +5,12 @@ To use:
 1. Download the training data from http://atriaseg2018.cardiacatlas.org/
 2. Unzip the training data, there should be a folder called "Training_set/"
 3. Copy everything in the unzipped "Training_set/" into the "Training_set/" folder in the repo
-4. Run on console:
+4. In the repo folder, run on console:
 
 ```bash
-python 0.random_sample.py sample_1
-python 1.seperate.py sample_1
-python 2.standardise.py sample_1
+$ python 0.random_sample.py sample_1
+$ python 1.seperate.py sample_1
+$ python 2.standardise.py sample_1
 ```
 
 Training_set/ - training data folder, 100 people, unchanged from the zip file
