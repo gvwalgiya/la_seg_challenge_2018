@@ -22,7 +22,7 @@ sample_*/ (e.g. sample_1/, sample_2/, etc.)- selected random samples for explora
 
 1.seperate.py - separates the different layers out of the MRI and manual annotation .nrrd files. Also merges the MRI and annotations for every 
 
-2.standardise.py - standardises histogram profiles for different samples. 
+2.standardise.py - standardises histogram profiles for different samples. I'm not sure the method is good though after looking at more histograms - will revisit.
 
 sample_code.py - came with the data zip file, used for submissions in the end
 
