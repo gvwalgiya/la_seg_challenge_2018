@@ -1,11 +1,11 @@
 # la_seg_challenge_2018
-My attempt at the LA Segmentation Challenge 2018
+Attempt at the LA Segmentation Challenge 2018
 
 Training_set/ - training data folder, 100 people, unchanged from the zip file
 
-sample_*/ - selected random samples for exploratory analysis and visualisation
+sample_*/ (e.g. sample_1/, sample_2/, etc.)- selected random samples for exploratory analysis and visualisation
 
-0.random_sample.py - selects a random sample, places the sample in a folder (I use sample_1/, sample_2/, etc.)
+0.random_sample.py - selects a random sample, places the sample in a folder (Jason: I use sample_1/, sample_2/, etc.)
 
 1.seperate.py - separates the different layers out of the MRI and manual annotation .nrrd files. Also merges the MRI and annotations for every 
 
