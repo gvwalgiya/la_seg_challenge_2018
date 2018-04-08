@@ -8,6 +8,7 @@ To use:
 4. In the repo folder, run on console:
 
 ```bash
+$ pipenv shell
 $ python 0.random_sample.py sample_1
 $ python 1.seperate.py sample_1
 $ python 2.standardise.py sample_1
