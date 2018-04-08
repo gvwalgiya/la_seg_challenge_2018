@@ -6,7 +6,8 @@ To use:
 2. Unzip the training data, there should be a folder called "Training_set/"
 3. Copy everything in the unzipped "Training_set/" into the "Training_set/" folder in the repo
 4. Run on console:
-'''
+
+'''sh
 python 0.random_sample.py sample_1
 python 1.seperate.py sample_1
 python 2.standardise.py sample_1
