@@ -34,6 +34,7 @@ for layer in range(lgemri.shape[0]):
     # Adaptive Equalisation of histogram
     lgemri_eq = exposure.equalize_adapthist(lgemri_stretch, clip_limit=0.015)
     plt.imsave(dir+"/rescl/%s_layer.png" % (layer+1), seg.mark_boundaries(lgemri_eq,laendo[layer,:,:]))
+    # Show processed histograms for every layer - see if they're roughly similar
     fig = plt.figure()
     ax = fig.add_subplot(111)
     ax.hist(lgemri_eq.ravel(),bins=256, histtype='step', color='black')
