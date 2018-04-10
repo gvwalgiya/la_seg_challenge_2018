@@ -1,3 +1,9 @@
+'''
+Standardises the images to similar intensity distributions.
+Attempt 1.
+Saves to rescl/
+'''
+
 import SimpleITK as sitk
 import matplotlib
 matplotlib.use('tkagg')
@@ -11,8 +17,8 @@ import sys
 dir = sys.argv[1]
 
 # Make all the folders if they're not there already
-if not os.path.exists(dir+"/std/"):
-    os.makedirs(dir+"/std/")
+if not os.path.exists(dir+"/rescl/"):
+    os.makedirs(dir+"/rescl/")
 
 # this function loads .nrrd files into a 3D matrix and outputs it
 # 	the input is the specified file path to the .nrrd file
@@ -28,18 +34,31 @@ def load_nrrd(full_path_filename):
 lgemri = load_nrrd(dir+"/lgemri.nrrd")
 laendo = load_nrrd(dir+"/laendo.nrrd")
 
+# Collect means and standard deviations of intensity of every slide
+stdev = []
+means = []
 # Rescale images to maintain similar contrast and intensity profile between different samples
 for layer in range(lgemri.shape[0]):
-    # Standardise data
-    lgemri_std = (lgemri-np.average(lgemri)/np.std(lgemri)
-    plt.imsave(dir+"/std/%s_layer.png" % (layer+1), seg.mark_boundaries(lgemri_std,laendo[layer,:,:]))
+    # Contrast Stretching
+    lower, higher = np.percentile(lgemri[layer,:,:], (1, 99))
+    lgemri_stretch = exposure.rescale_intensity(lgemri[layer,:,:], in_range=(lower, higher))
+    # Adaptive Equalisation of histogram
+    lgemri_eq = exposure.equalize_adapthist(lgemri_stretch, clip_limit=0.015)
+    stdev.append(np.std(lgemri_eq))
+    means.append(np.mean(lgemri_eq))
+    boundaries = seg.mark_boundaries(lgemri_eq, laendo[layer,:,:])
+    save_name = dir+"/rescl/%s_layer.png" % (layer+1)
+    plt.imsave(save_name, boundaries)
     # Show processed histograms for every layer - see if they're roughly similar
     fig = plt.figure()
     ax = fig.add_subplot(111)
-    ax.hist(lgemri_std.ravel(),bins=256, histtype='step', color='black')
+    ax.hist(lgemri_eq.ravel(),bins=256, histtype='step', color='black')
     ax.ticklabel_format(axis='y', style='scientific', scilimits=(0, 0))
     ax.set_xlabel('Pixel intensity')
     ax.set_xlim(0, 1)
     ax.set_yticks([])
-    plt.savefig(dir+"/std/%s_hist.png" % (layer+1))
+    plt.savefig(dir+"/rescl/%s_hist.png" % (layer+1))
     plt.close()
+
+np.save(dir+"/rescl/stdev.np",np.array(stdev))
+np.save(dir+"/rescl/means.np",np.array(means))
