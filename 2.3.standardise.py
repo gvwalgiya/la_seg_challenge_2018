@@ -1,6 +1,8 @@
 '''
+2.3.standardise.py
 Standardises the images to similar intensity distributions.
 Attempt 3.
+Uses cv2.normalize() from 0 to 255
 Saves to cv_norm/
 '''
 import SimpleITK as sitk

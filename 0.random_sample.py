@@ -1,13 +1,17 @@
+
+'''
+0.random_sample.py
+Selects random people from the 100 samples in the training data set.
+Used for exploratory stuff so we can visualise what's happening.
+'''
+
 from distutils.dir_util import copy_tree
 import os
 import sys
 import glob
 import random
 
-"""  
-Selects random people from the 100 samples in the training data set.
-Used for exploratory stuff so we can visualise what's happening.
-"""
+print(__doc__)
 
 # From script arguments decide where to copy sample to
 toDirectory = sys.argv[1]+"/"

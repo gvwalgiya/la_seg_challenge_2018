@@ -1,6 +1,8 @@
 '''
+2.2.standardise.py
 Standardises the images to similar intensity distributions.
 Attempt 2.
+Uses method (value-average)/stdev then rescale from 0.0 to 1.0
 Saves to std/
 '''
 

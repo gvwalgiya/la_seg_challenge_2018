@@ -1,3 +1,9 @@
+'''
+1.seperate.py
+Separates the different layers out of the MRI and manual annotation .nrrd files. 
+Also merges the MRI and annotations for every layer
+'''
+
 import SimpleITK as sitk
 import matplotlib
 matplotlib.use('tkagg')

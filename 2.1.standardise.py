@@ -1,6 +1,8 @@
 '''
+2.1.standardise.py
 Standardises the images to similar intensity distributions.
 Attempt 1.
+Stretches contrasts then performs adaptive equalisation of intensity histograms.
 Saves to rescl/
 '''
 
