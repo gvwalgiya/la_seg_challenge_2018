@@ -14,6 +14,8 @@ import os
 import numpy as np
 import sys
 
+print(__doc__)
+
 dir = sys.argv[1]
 
 # Make all the folders if they're not there already
@@ -34,9 +36,6 @@ def load_nrrd(full_path_filename):
 lgemri = load_nrrd(dir+"/lgemri.nrrd")
 laendo = load_nrrd(dir+"/laendo.nrrd")
 
-# Collect means and standard deviations of intensity of every slide
-stdev = []
-means = []
 # Rescale images to maintain similar contrast and intensity profile between different samples
 for layer in range(lgemri.shape[0]):
     # Contrast Stretching
@@ -44,11 +43,9 @@ for layer in range(lgemri.shape[0]):
     lgemri_stretch = exposure.rescale_intensity(lgemri[layer,:,:], in_range=(lower, higher))
     # Adaptive Equalisation of histogram
     lgemri_eq = exposure.equalize_adapthist(lgemri_stretch, clip_limit=0.015)
-    stdev.append(np.std(lgemri_eq))
-    means.append(np.mean(lgemri_eq))
     boundaries = seg.mark_boundaries(lgemri_eq, laendo[layer,:,:])
-    save_name = dir+"/rescl/%s_layer.png" % (layer+1)
-    plt.imsave(save_name, boundaries)
+    plt.imsave(dir+"/rescl/%s_layer.png" % (layer+1), boundaries)
+    np.save(dir+"/rescl/%s_layer" % (layer+1), lgemri_eq)
     # Show processed histograms for every layer - see if they're roughly similar
     fig = plt.figure()
     ax = fig.add_subplot(111)
@@ -59,6 +56,3 @@ for layer in range(lgemri.shape[0]):
     ax.set_yticks([])
     plt.savefig(dir+"/rescl/%s_hist.png" % (layer+1))
     plt.close()
-
-np.save(dir+"/rescl/stdev.np",np.array(stdev))
-np.save(dir+"/rescl/means.np",np.array(means))

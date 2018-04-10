@@ -11,7 +11,7 @@ To use:
 $ pipenv shell
 $ python 0.random_sample.py sample_1
 $ python 1.seperate.py sample_1
-$ python 2.standardise.py sample_1
+$ python 2.standardise.py sample_1 <-Currently experimenting on different ways to standardise, so there are multiple versions of this script
 ```
 
 Training_set/ - training data folder, 100 people, unchanged from the zip file
