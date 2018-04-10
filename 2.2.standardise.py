@@ -48,8 +48,8 @@ for layer in range(lgemri.shape[0]):
     lgemri_std_rescl = lgemri_positive/np.max(lgemri_positive)
     # Mark and save
     boundaries = seg.mark_boundaries(lgemri_std_rescl, laendo[layer,:,:])
-    plt.imsave(dir+"/std/%s_layer.png" % (layer+1), boundaries)
-    np.save(dir+"/std/%s_layer" % (layer+1), lgemri_std_rescl)
+    plt.imsave(dir+"/std/layer_%s.png" % (layer+1), boundaries)
+    np.save(dir+"/std/layer_%s" % (layer+1), lgemri_std_rescl)
     # Show processed histograms for every layer - see if they're roughly similar
     fig = plt.figure()
     ax = fig.add_subplot(111)
@@ -58,5 +58,5 @@ for layer in range(lgemri.shape[0]):
     ax.set_xlabel('Pixel intensity')
     ax.set_xlim(0, 1)
     ax.set_yticks([])
-    plt.savefig(dir+"/std/%s_hist.png" % (layer+1))
+    plt.savefig(dir+"/std/hist_%s.png" % (layer+1))
     plt.close()

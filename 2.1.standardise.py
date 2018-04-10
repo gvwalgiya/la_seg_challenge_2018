@@ -46,8 +46,8 @@ for layer in range(lgemri.shape[0]):
     # Adaptive Equalisation of histogram
     lgemri_eq = exposure.equalize_adapthist(lgemri_stretch, clip_limit=0.015)
     boundaries = seg.mark_boundaries(lgemri_eq, laendo[layer,:,:])
-    plt.imsave(dir+"/rescl/%s_layer.png" % (layer+1), boundaries)
-    np.save(dir+"/rescl/%s_layer" % (layer+1), lgemri_eq)
+    plt.imsave(dir+"/rescl/layer_%s.png" % (layer+1), boundaries)
+    np.save(dir+"/rescl/layer_%s" % (layer+1), lgemri_eq)
     # Show processed histograms for every layer - see if they're roughly similar
     fig = plt.figure()
     ax = fig.add_subplot(111)
@@ -56,5 +56,5 @@ for layer in range(lgemri.shape[0]):
     ax.set_xlabel('Pixel intensity')
     ax.set_xlim(0, 1)
     ax.set_yticks([])
-    plt.savefig(dir+"/rescl/%s_hist.png" % (layer+1))
+    plt.savefig(dir+"/rescl/hist_%s.png" % (layer+1))
     plt.close()

@@ -45,8 +45,8 @@ for layer in range(lgemri.shape[0]):
     cv2.normalize(lgemri[layer,:,:], lgemri_cv_norm, 0, 255, cv2.NORM_MINMAX)
     # Mark and save
     boundaries = seg.mark_boundaries(lgemri_cv_norm, laendo[layer,:,:])
-    plt.imsave(dir+"/cv_norm/%s_layer.png" % (layer+1), boundaries)
-    np.save(dir+"/cv_norm/%s_layer" % (layer+1), lgemri_cv_norm)
+    plt.imsave(dir+"/cv_norm/layer_%s.png" % (layer+1), boundaries)
+    np.save(dir+"/cv_norm/layer_%s" % (layer+1), lgemri_cv_norm)
     # Show processed histograms for every layer - see if they're roughly similar
     fig = plt.figure()
     ax = fig.add_subplot(111)
@@ -55,5 +55,5 @@ for layer in range(lgemri.shape[0]):
     ax.set_xlabel('Pixel intensity')
     ax.set_xlim(0, 1)
     ax.set_yticks([])
-    plt.savefig(dir+"/cv_norm/%s_hist.png" % (layer+1))
+    plt.savefig(dir+"/cv_norm/hist_%s.png" % (layer+1))
     plt.close()

@@ -1,5 +1,6 @@
 # la_seg_challenge_2018
 Attempt at the LA Segmentation Challenge 2018
+Note of caution - Running everything, including the normalisation significance data reorganisation, will take about 10GB.
 
 To use:
 1. Download the training data from http://atriaseg2018.cardiacatlas.org/
@@ -24,7 +25,9 @@ sample_*/ (e.g. sample_1/, sample_2/, etc.)- selected random samples for explora
 
 2.standardise.py - standardises histogram profiles for different samples. I'm not sure the method is good though after looking at more histograms - will revisit.
 
-significance.ipynb - test to see if there are significant differences in intensity values between samples and within samples for each method of standardising. There shouldn't be because the intensity/contrast does not actually mean anything in terms of where the LA is.
+sig_resave.py - data reorganisation for significance.py
+
+significance.py - test to see if there are significant differences in intensity values between samples and within samples for each method of standardising. There shouldn't be because the intensity/contrast does not actually mean anything in terms of where the LA is.
 
 sample_code.py - came with the data zip file, used for submissions in the end
 
