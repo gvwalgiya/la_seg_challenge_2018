@@ -1,4 +1,6 @@
 import SimpleITK as sitk
+import matplotlib
+matplotlib.use('tkagg')
 import matplotlib.pyplot as plt
 import skimage.segmentation as seg
 from skimage import exposure, img_as_float
