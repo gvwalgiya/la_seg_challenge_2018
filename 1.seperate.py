@@ -14,6 +14,8 @@ import os
 import numpy as np
 import sys
 
+print(__doc__)
+
 dir = sys.argv[1]
 
 # Make all the folders if they're not there already
@@ -40,9 +42,10 @@ laendo = load_nrrd(dir+"/laendo.nrrd")
 
 # Save each layer separately
 for layer in range(lgemri.shape[0]):
-   plt.imsave(dir+"/lgemri/layer_%s.png" % (layer+1),lgemri[layer,:,:])
+   plt.imsave(dir+"/lgemri/layer_%s.png" % (layer+1), lgemri[layer,:,:])
+   np.save(dir+"/lgemri/layer_%s" % (layer+1), lgemri[layer,:,:])
 for layer in range(lgemri.shape[0]):
-   plt.imsave(dir+"/laendo/layer_%s.png" % (layer+1),laendo[layer,:,:])
+   plt.imsave(dir+"/laendo/layer_%s.png" % (layer+1), laendo[layer,:,:])
 
 # Overlay the manual annotations on the MRIs
 for layer in range(lgemri.shape[0]):
