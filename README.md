@@ -11,7 +11,7 @@ To use:
 $ pipenv shell
 $ python 0.random_sample.py sample_1
 $ python 1.seperate.py sample_1
-$ python 2.standardise.py sample_1 <-Currently experimenting on different ways to standardise, so there are multiple versions of this script
+$ python 2.standardise.py sample_1 <- Currently experimenting on different ways to standardise, so there are multiple versions of this script
 ```
 
 Training_set/ - training data folder, 100 people, unchanged from the zip file
@@ -23,6 +23,8 @@ sample_*/ (e.g. sample_1/, sample_2/, etc.)- selected random samples for explora
 1.seperate.py - separates the different layers out of the MRI and manual annotation .nrrd files. Also merges the MRI and annotations for every layer
 
 2.standardise.py - standardises histogram profiles for different samples. I'm not sure the method is good though after looking at more histograms - will revisit.
+
+significance.ipynb - test to see if there are significant differences in intensity values between samples and within samples for each method of standardising. There shouldn't be because the intensity/contrast does not actually mean anything in terms of where the LA is.
 
 sample_code.py - came with the data zip file, used for submissions in the end
 
