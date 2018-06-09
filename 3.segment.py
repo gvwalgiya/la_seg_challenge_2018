@@ -32,6 +32,3 @@ for method in std_methods:
         blur = cv.GaussianBlur(mri_slice,(25,25),0)
         cv_at = cv.adaptiveThreshold(blur,255,cv.ADAPTIVE_THRESH_GAUSSIAN_C, cv.THRESH_BINARY,75,2)
         plt.imsave(sample+"/seg/"+str(slice_number)+"_cvat_"+str(method)+".jpg",mark_boundaries(mri_slice,cv_at))
-
-
-

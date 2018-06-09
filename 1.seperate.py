@@ -8,6 +8,7 @@ import SimpleITK as sitk
 import matplotlib
 matplotlib.use('tkagg')
 import matplotlib.pyplot as plt
+from matplotlib import cm
 import skimage.segmentation as seg
 from skimage import exposure, img_as_float
 import os
@@ -42,7 +43,7 @@ laendo = load_nrrd(dir+"/laendo.nrrd")
 
 # Save each layer separately
 for layer in range(lgemri.shape[0]):
-   plt.imsave(dir+"/lgemri/layer_%s.png" % (layer+1), lgemri[layer,:,:])
+   plt.imsave(dir+"/lgemri/layer_%s.png" % (layer+1), lgemri[layer,:,:], cmap=cm.Greys)
    np.save(dir+"/lgemri/layer_%s" % (layer+1), lgemri[layer,:,:])
 for layer in range(lgemri.shape[0]):
    plt.imsave(dir+"/laendo/layer_%s.png" % (layer+1), laendo[layer,:,:])
