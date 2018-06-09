@@ -159,8 +159,8 @@ model = Model(input=inp, output=conv10)
 model.compile(optimizer=Adam(lr=1e-4),
                 loss='binary_crossentropy', metrics=['accuracy'])
 
-model_checkpoint = ModelCheckpoint('unet.hdf5', monitor='loss',verbose=1, save_best_only=True)
+model_checkpoint = ModelCheckpoint('keras_unet.hdf5', monitor='loss',verbose=1, save_best_only=True)
 print('Fitting model...')
 model.fit(X_train, Y_train, 
-          batch_size=4, epochs=10, verbose=1,
+          batch_size=4, epochs=25, verbose=1,
           validation_split=0.25, shuffle=True, callbacks=[model_checkpoint])
