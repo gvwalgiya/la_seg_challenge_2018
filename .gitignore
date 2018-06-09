@@ -99,3 +99,8 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+# Data files
+*.npy
+*.hdf5
+log
